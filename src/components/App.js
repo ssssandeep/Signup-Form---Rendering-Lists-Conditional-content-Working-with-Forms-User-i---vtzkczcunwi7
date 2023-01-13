@@ -7,8 +7,9 @@ const App = () => {
     event.preventDefault();
     console.log("onSubmission")
     const formData = new FormData(event.target)
-    for(let [name,value] of formData){
-      console.log(name+" : "+value);
+    console.log(formData)
+    for(let [key,value] of formData){
+      console.log(key+" : "+value);
     }
     console.log("submitted")
   }
@@ -30,7 +31,7 @@ const App = () => {
         </select><br/><br/>
 
         <label htmlFor="phone">Phone Number</label>
-        <input type='number' placeholder="Phone Number"/><br/><br/>
+        <input type='number' data-testid="phoneNumber" placeholder="Phone Number"/><br/><br/>
 
         <input type="password" data-testid = 'password' placeholder="Password"/><br /><br />
 
