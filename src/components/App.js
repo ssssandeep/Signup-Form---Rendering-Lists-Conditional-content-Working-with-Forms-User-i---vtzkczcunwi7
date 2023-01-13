@@ -2,15 +2,17 @@ import React, {Component, useState} from "react";
 import '../styles/App.css';
 
 const App = () => {
-  //const [error, setError] = useState([]);
+  const [emailValue, setEmail] = useState('');
+  const [submitted,setSubmission] = useState(false);
+  const emailChangeHandler = (event) => {
+    setEmail(event.target.value)
+  }
   const validateForm = (event) => {
     event.preventDefault();
-    console.log("onSubmission")
+    console.log("onSubmission"+event.target)
     const formData = new FormData(event.target)
     console.log(formData)
-    for(let [key,value] of formData){
-      console.log(key+" : "+value);
-    }
+    setSubmission(true)
     console.log("submitted")
   }
   return (
@@ -21,7 +23,7 @@ const App = () => {
         <input type="text" data-testid = 'name' placeholder="Name"/><br/><br/>
 
         <label htmlFor="email">Email</label>
-        <input type="text" data-testid = 'email' placeholder="Email" /><br/><br/>
+        <input type="text" data-testid = 'email' value={emailValue} onChange={emailChangeHandler} placeholder="Email" /><br/><br/>
 
         <label htmlFor="gender">Gender</label>
         <select data-testid = 'gender' >
@@ -33,11 +35,11 @@ const App = () => {
         <label htmlFor="phone">Phone Number</label>
         <input type='number' data-testid="phoneNumber" placeholder="Phone Number"/><br/><br/>
 
-        <input type="password" data-testid = 'password' placeholder="Password"/><br /><br />
+        <input type="password" data-testid = 'password' minLength={"6"} placeholder="Password"/><br /><br />
 
         <input type="submit" data-testid = 'submit'/>
       </form>
-      
+      {submitted && <div className="welcome">{"Hello "+emailValue.split("@")[0]}</div>}
     </div>
   )
 }
