@@ -9,11 +9,10 @@ const App = () => {
   }
   const validateForm = (event) => {
     event.preventDefault();
-    console.log("onSubmission"+event.target)
-    const formData = new FormData(event.target)
-    console.log(formData)
+    //console.log("onSubmission"+event.target)
+    // const formData = new FormData(event.target)
+    // console.log(formData)
     setSubmission(true)
-    console.log("submitted")
   }
   return (
     <div id="main">
