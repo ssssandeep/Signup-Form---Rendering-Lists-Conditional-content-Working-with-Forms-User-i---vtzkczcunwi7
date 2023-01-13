@@ -1,14 +1,16 @@
 import React, {Component, useState} from "react";
 import '../styles/App.css';
 
-const App = (event) => {
-  const [error, setError] = useState([]);
-  const validateForm = () => {
-    event.preventDefault()
+const App = () => {
+  //const [error, setError] = useState([]);
+  const validateForm = (event) => {
+    event.preventDefault();
+    console.log("onSubmission")
     const formData = new FormData(event.target)
-    for(let [key,value] of formData.entries()){
-      console.log(key+" : "+value);
+    for(let [name,value] of formData){
+      console.log(name+" : "+value);
     }
+    console.log("submitted")
   }
   return (
     <div id="main">
@@ -18,7 +20,7 @@ const App = (event) => {
         <input type="text" data-testid = 'name' placeholder="Name"/><br/><br/>
 
         <label htmlFor="email">Email</label>
-        <input type="email" placeholder="Email" /><br/><br/>
+        <input type="text" data-testid = 'email' placeholder="Email" /><br/><br/>
 
         <label htmlFor="gender">Gender</label>
         <select data-testid = 'gender' >
