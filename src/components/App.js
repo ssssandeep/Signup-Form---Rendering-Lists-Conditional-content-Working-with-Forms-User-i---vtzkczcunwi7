@@ -38,7 +38,7 @@ const App = () => {
 
         <input type="submit" data-testid = 'submit'/>
       </form>
-      {submitted && <div className="welcome">{"Hello "+emailValue.split("@")[0]}</div>}
+      {submitted ? <div className="welcome">{"Hello "+emailValue.split("@")[0]}</div> : ''}
     </div>
   )
 }
